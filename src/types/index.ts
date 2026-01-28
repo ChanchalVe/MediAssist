@@ -32,6 +32,7 @@ export interface DoseRecord {
   actualTime?: string;
   status: 'taken' | 'missed' | 'pending';
   date: string;
+  alertSent?: boolean;
 }
 
 export interface Pharmacy {
