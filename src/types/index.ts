@@ -2,7 +2,7 @@ export interface Caregiver {
   id: string;
   name: string;
   phone?: string;
-  email?: string;
+  email: string;
   relationship: 'family' | 'doctor' | 'other';
 }
 

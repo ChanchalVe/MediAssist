@@ -23,19 +23,28 @@ const ProfilePage: React.FC = () => {
     setForm((prev) => ({ ...prev, [field]: value }));
   };
 
+// handle add update dfro email feature to woork
   const handleAdd = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!form.name.trim()) return;
+  e.preventDefault();
 
-    const newCaregiver: Caregiver = {
-      id: Math.random().toString(36).slice(2),
-      ...form,
-    };
+  if (!form.name.trim()) return;
 
-    const newList = [...(user.caregivers || []), newCaregiver];
-    await updateCaregivers(newList);
-    setForm(emptyForm);
+  if (!form.email.trim()) {
+    alert("Caregiver email is required to receive missed-dose alerts.");
+    return;
+  }
+
+  const newCaregiver: Caregiver = {
+    id: Math.random().toString(36).slice(2),
+    ...form,
   };
+
+  const newList = [...(user.caregivers || []), newCaregiver];
+  await updateCaregivers(newList);
+  setForm(emptyForm);
+};
+// updation finished to make the email mandatory 
+
 
   const handleDelete = async (id: string) => {
     const newList = (user.caregivers || []).filter((c) => c.id !== id);
@@ -65,11 +74,12 @@ const ProfilePage: React.FC = () => {
           className="w-full border border-gray-600 bg-gray-800 p-2 rounded"
         />
         <input
-          type="email"
-          placeholder="Email (optional)"
-          value={form.email}
-          onChange={(e) => handleChange("email", e.target.value)}
-          className="w-full border border-gray-600 bg-gray-800 p-2 rounded"
+           type="email"
+           placeholder="Email (required for alerts)"
+           value={form.email}
+           onChange={(e) => handleChange("email", e.target.value)}
+           className="w-full border border-gray-600 bg-gray-800 p-2 rounded"
+           required
         />
         <select
           value={form.relationship}
@@ -103,7 +113,8 @@ const ProfilePage: React.FC = () => {
                 {c.name} ({c.relationship})
               </div>
               <div className="text-sm text-gray-400">
-                {c.phone || c.email || "No contact"}
+                {c.email}
+                {c.phone && ` • ${c.phone}`}
               </div>
             </div>
             <button
