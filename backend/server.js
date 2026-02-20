@@ -79,15 +79,32 @@ app.use('/api', profileRoutes);
 app.use('/api', sendEmailRoutes);
 
 // MongoDB Atlas Connection
+// mongoose
+//   .connect(process.env.MONGO_URI)
+//   .then(() => {
+//     console.log('MongoDB connected');
+
+//     const PORT = process.env.PORT || 5000;
+
+//     app.listen(PORT, () =>
+//       console.log(`Server listening on port ${PORT}`)
+//     );
+//   })
+//   .catch((err) => console.error('DB error:', err));
+
 mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => {
-    console.log('MongoDB connected');
+.connect(process.env.MONGO_URI)
+.then(() => {
+  console.log("MongoDB connected");
 
-    const PORT = process.env.PORT || 5000;
+  const PORT = process.env.PORT || 5000;
 
-    app.listen(PORT, () =>
-      console.log(`Server listening on port ${PORT}`)
-    );
-  })
-  .catch((err) => console.error('DB error:', err));
+  app.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}`);
+  });
+})
+.catch((err) => {
+  console.error("MongoDB CONNECTION FAILED:");
+  console.error(err);
+  process.exit(1);
+});
