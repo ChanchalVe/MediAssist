@@ -11,7 +11,8 @@ const AddMedicineForm: React.FC = () => {
     times: ['09:00'],
     foodInstruction: 'after' as 'before' | 'after' | 'with' | 'empty',
     duration: 1,
-    daysLeft: 1
+    daysLeft: 1,
+    isCritical: false // ⭐ NEW
   });
 
   const [success, setSuccess] = useState(false);
@@ -35,7 +36,8 @@ const AddMedicineForm: React.FC = () => {
       times: ['09:00'],
       foodInstruction: 'after',
       duration: 1,
-      daysLeft: 1
+      daysLeft: 1,
+      isCritical: false // ⭐ NEW
     });
 
     setTimeout(() => setSuccess(false), 3000);
@@ -188,6 +190,34 @@ const AddMedicineForm: React.FC = () => {
             />
           </div>
         </div>
+
+        {/* // critical medicine */}
+
+        <div className="md:col-span-2 mt-4">
+  <label className="flex items-start space-x-3 cursor-pointer">
+    <input
+      type="checkbox"
+      checked={formData.isCritical}
+      onChange={(e) =>
+        setFormData(prev => ({
+          ...prev,
+          isCritical: e.target.checked
+        }))
+      }
+      className="mt-1 h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded"
+    />
+    <div>
+      <span className="text-sm font-medium text-gray-900">
+        Mark as Critical Medicine
+      </span>
+      <p className="text-sm text-gray-500">
+        Missing this medicine may require urgent attention or caregiver alert.
+      </p>
+    </div>
+  </label>
+</div>
+
+{/* critical medicine end */}
 
         <div className="mt-8 flex justify-end">
           <button
