@@ -1,4 +1,4 @@
-# MediAssist 💊
+# Curaivo 💊
 
 > A full-stack medication management system that helps users stay on top of their prescriptions, schedules, and health routines — so missed doses become a thing of the past.
 
@@ -22,7 +22,7 @@
 
 ## About
 
-MediAssist is a healthcare web application built to simplify medication management for individuals. It provides a secure, centralized platform where users can register their medications, set up schedules, and receive automated reminders — reducing human error and improving treatment adherence.
+Curaivo is a healthcare web application built to simplify medication management for individuals. It provides a secure, centralized platform where users can register their medications, set up schedules, and receive automated reminders — reducing human error and improving treatment adherence.
 
 ---
 
@@ -65,8 +65,8 @@ Make sure you have the following installed:
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/your-username/mediassist.git
-   cd mediassist
+   git clone https://github.com/your-username/Curaivo .git
+   cd Curaivo
    ```
 
 2. **Install backend dependencies**
@@ -127,7 +127,7 @@ Make sure you have the following installed:
 ## Project Structure
 
 ```
-mediassist/
+Curaivo /
 ├── client/               # React frontend
 │   ├── public/
 │   └── src/
